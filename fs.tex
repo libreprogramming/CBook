@@ -49,11 +49,13 @@
 At this point of time I would like to look back and refer to ISO/IEC
 9899:TC2 which is the C99 specification with me. Since my thoughts are
 random in nature I will try to follow the organization of content
-given in the specification.
+given in the specification. However, note that I will not include all
+the contents of specification and will exclude some of very obvious
+and trivial sections/subsections.
 
 \section{Terms, Definitions, and Symbols}
 \startitemize[n]
-\item\type{access.}\textreference[access]~There are two parts of any
+\item\type{access.}\textreference[access]~~There are two parts of any
 program. Data and
 instruction. Programs are stored in file on some non-volatile storage for
 example, hard disk drive, cd, dvd, tape drive. When they are executed
@@ -143,5 +145,39 @@ Memory Alignment Program
 The output is shown below:
 \blank[force, 1mm]
 \useexternalfigure[alignment][figs/align.png]
-\placefigure{Output of align.c}{\externalfigure[figs/align.png][rscale=1.5]}
+\placefigure{Output of
+  align.c}{\externalfigure[figs/align.png][rscale=1.5]}
+I am always showing screenshots of program's output but now onwards I
+will not show them as they just consume space.
+\item\type{argument}\textreference[argument]~~Actually you have seen
+  this when I discussed the \type{printf} and \type{scanf} functions
+  in Chapter 1. Sometimes they are also called actual parameters but
+  as you can see in specification ISO/IEC 9899:TC2 Section 3.3 this
+  term is being deprecated. A function can have zero or more actual
+  arguments and if they are more than one then each of them will be
+  separated by a comma. These also apply to macros that is
+  preprocessor directives when invoked like a function.
+\item\type{implementation-defined-behavior}\textreference[implementation-defined-behavior]~~When
+  specification does not specify how a particular element of language
+  should be implemented then programs use their logic to implement
+  these things and sometimes it depends on hardware as well. Behavior
+  of such elements is called implementation-defined-behavior.
+\item\type{locale-specific-behavior}\textreference[locale-specific-behavior]~~The
+  implementation has a very generic description for it. In software
+  locale typically confines its meaning to language. However, if you
+  know more please e-mail me about it.
+\item\type{undefined-behavior}\textreference[undefined-behavior]~~Specification
+  is sometimes not sure about behavior of program as it may be out of
+  scope of specification. Specification gives an example of integer
+  overflow because integer overflow very much depends on word-width of
+  integer which again is dependent on hardware and hence it is very
+  difficult to capture in a specification.
+\item\type{unspecified-behavior}\textreference[unspecified-behavior]~~When
+  specification specifies two or more ways to do it and imposes no
+  requirement on choosing one of them then the behavior is unspecified
+  as it is not mentioned in specification.
+\item\type{bit}\textreference[bit]~~Now we are encountering the most
+  important entity in programming that is a bit. Specification says it
+  should be large enough to store one of two values. These
+  values are as mentioned in Chapter 1.
 \stopitemize
