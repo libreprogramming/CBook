@@ -1,0 +1,212 @@
+%interface=en --mode=screen
+\usemodule[simplefonts,vim,mathml,database]
+%\setmainfont[Arial]
+%\setsansfont[]
+%\setmonofont[Latin Modern Mono]
+%\setupbodyfont[Arial,10pt]
+\unprotect
+\definepapersize
+  [manual]
+  [\c!width=21.6cm,
+   \c!height=27.9cm]
+
+\definepapersize
+  [screen]
+  [\c!width=21.6cm,
+   \c!height=27.9cm]
+
+\setuppapersize
+  [manual]
+  [screen]
+
+%toc
+\setupcolors[state=start]
+% turn off numbering of some levels
+\setuphead[subsection]
+\setuphead[subsubsection]
+% TOC
+% level=4, \subsubsubsections are not listed in TOC
+% alternative=c, space to the page number is filled with dots
+\setupcombinedlist[content][level=4,alternative=c,interaction=all,color=blue]
+\setuplist[chapter][width=5mm]
+\setuplist[section][width=10mm]
+\setuplist[subsection][width=15mm]
+% pagestyle=normal for changing the appearance of pagenumber
+\setuplist[subsubsection][width=20mm]
+%toc end
+%pdf bookmarks
+\startallmodes[screen]
+
+\setupinteractionscreen[option=bookmark]
+%pdf bookmarks end
+%for cross-references
+\def\myref[#1:#2]{%
+  \expandafter\ifx\csname in#1\endcsname\relax
+    \writestatus{warning}{referenceformat in#1 not defined}%
+    \in[#1:#2]%
+  \else
+    \csname in#1\endcsname[#1:#2]%
+  \fi}
+\protect
+
+\definevimtyping[CPP][syntax=cpp, numbering=on]
+
+\preloadtypescripts
+
+\definetypeface[mainfacenormal]  [rm][serif] [modern]       [default]
+\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
+\definetypeface[mainfacenormal]  [tt][mono] [modern]      [default]
+\definetypeface[mainfacenormal]  [mm][math] [modern]       [default]
+
+\definetypeface[mainfacemedium]  [rm][serif] [modern][default]
+\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
+\definetypeface[mainfacemedium]  [tt][mono] [modern]      [default]
+\definetypeface[mainfacemedium]  [mm][math] [modern][default]
+
+\definetypeface[mainfacenarrowtt][tt][mono] [modern] [default]
+
+\setupbodyfont[mainfacenormal,11pt]
+
+\definehead
+  [remark]
+  [subsubsubject]
+
+\setuphead [chapter]      [color=green]
+\setuphead [section]      [color=green]
+\setuphead [subsection]   [color=green]
+\setuphead [subsubsection][color=green]
+
+\setupheadertexts
+  []
+
+\setupcolors
+  [state=start]
+
+\setuptyping
+  [color=blue,
+]%   style=\mainfacenarrowtt]
+
+\definetyping[functioncall]
+
+\setuptype
+  [color=orchid,
+]%   style=\mainfacenarrowtt]
+
+\definecolor[blue] [b=.5]
+\definecolor[red]  [r=.5]
+\definecolor[green][g=.5]
+\definecolor[orchid][g=.2,b=.2]
+
+\startsetups pagenumber:right
+  \setlayerframed
+    [page]
+    [preset=rightbottom,offset=1cm]
+    [frame=off,height=1cm,offset=overlay]
+    {\useMPgraphic{luanumber}}
+  \setlayerframed
+    [page]
+    [preset=rightbottom,offset=1cm,x=1.5cm]
+    [frame=off,height=1cm,width=1cm,offset=overlay]
+    {\pagenumber}
+  \setlayerframed
+    [page]
+    [preset=rightbottom,offset=1cm,x=2.5cm]
+    [frame=off,height=1cm,offset=overlay]
+    {\getmarking[chapter]}% Lua\TeX\ Reference Manual}
+\stopsetups
+
+\startsetups pagenumber:left
+  \setlayerframed
+    [page]
+    [preset=leftbottom,offset=1cm,x=2.5cm]
+    [frame=off,height=1cm,offset=overlay]
+    {\getmarking[chapter]}
+  \setlayerframed
+    [page]
+    [preset=leftbottom,offset=1cm,x=1.5cm]
+    [frame=off,height=1cm,width=1cm,offset=overlay]
+    {\pagenumber}
+  \setlayerframed
+    [page]
+    [preset=leftbottom,offset=1cm]
+    [frame=off,height=1cm,offset=overlay]
+    {\useMPgraphic{luanumber}}
+\stopsetups
+
+\setupinteraction
+  [state=start,
+   focus=standard, 
+   color=all,
+   contrastcolor=]
+
+\placebookmarks
+  [chapter,section,subsection,title,tableofcontents][chapter,section,subsection,title,tableofcontents]
+\setuplist
+  [chapter,section,subsection,subsubsection,table,figure]
+   [level=4,alternative=c,interaction=all,color=blue]
+
+% Hans doesn't like the bookmarks opening by default
+% \setupinteractionscreen[option=bookmark]
+
+\appendtoks\let\luatex\firstofoneargument\to\simplifiedcommands
+\def\myin[#1:#2]{%
+  \expandafter\ifx\csname in#1\endcsname\relax
+    \writestatus{warning}{referenceformat in#1 not defined}%
+    \in[#1:#2]%
+  \else
+    \csname in#1\endcsname[#1:#2]%
+  \fi}
+
+\starttext
+%Hans's setup for headers
+\setuppagenumbering[state=start,alternative=doublesided]
+
+\setupheadertexts[]
+\setupheadertexts[\setups{text a}][][][\setups{text b}]
+
+\startsetups[text a]
+  \rlap{\pagenumber}
+  \hfill
+  \getmarking[chapter]
+  \hfill
+  \llap{}
+\stopsetups
+
+\startsetups[text b]
+  \rlap{}
+  \hfill
+  \getmarking[section]
+  \hfill
+  \llap{\pagenumber}
+\stopsetups
+\startfrontmatter
+\startstandardmakeup
+\startalignment[center]
+  \vfill \definedfont[Serif at 48pt]\setstrut \strut Learning Correct   
+  \definedfont[Serif at 48pt]\setstrut \strut Programming
+  \blank[2*big] \definedfont[Serif at 30pt]\setstrut \strut C
+  \blank[3*big] \definedfont[Serif at 36pt]\setstrut \strut Shiv S Dayal
+  \vfill
+\stopalignment
+\stopstandardmakeup
+\completecontent
+\completelistoftables
+\completelistoffigures
+\stopfrontmatter
+\input{Preface.tex}
+\part{C}
+\startstandardmakeup
+\startalignment[center]
+  \vfill
+	\definedfont[Serif at 48pt]\setstrut \strut Part I
+	\blank[3*big]
+	\definedfont[Serif at 48pt]\setstrut \strut C 
+  \vfill
+\stopalignment
+\stopstandardmakeup
+\input{introduction.tex}
+\input{fs.tex}
+\startbackmatter
+\completeindex[interaction=all]
+\stopbackmatter
+\stoptext
