@@ -1,0 +1,134 @@
+\useURL[mailto://shivshankar.dayal@gmail.com] [shivshankar.dayal@gmail.com]
+\title{Preface}
+Please let me introduce myself. As you know my name is Shiv Shankar Dayal if
+you have taken care of reading author's name on the first page which I expect
+you have unless you were too busy and having your attention anywhere else.
+I am a programmer by choice and was so by profession as well till recent past
+when I decided to quit job because of personal problems. So I decided to write
+this book to pass my time as I am at home full time. There are many books on C,
+however, for a person like me who has no source of income is forced to rely
+on open-source books. I agree that there are tons of excellent free (free as in
+freedom, not free beer) software, but few free books. Again, there is a problem
+that software can be created and copied and maintained easily but such is not
+the case with books if you publish it. Therefore, I have decided to keep under
+GNU FDL and distribute only soft copies. If some publisher publishes it even
+then soft copy will remian free.
+
+There is another reason for writing a book on C. First, I think I know it well.
+Just to brag I have been programming for 11 years, however, my knowledge is
+very limited and inaccurate when it comes to programming. On the contrary I
+write programs very slow. They are never commented and complex and difficult
+to maintain. Second, C is kind of greatest common denominator of many major
+software. Almost all Unix-like systems and also Windows have been developed
+in C. Programming languages like C++, Java, Perl, Python, Ruby, Lua etc have all
+there roots somewhere in C. Again, I am not sure facts please cross-check
+about names. I am just guessing. All the languages have C bindings. Backward
+compatibility with C is a very important reason for the success of C++.
+However, that is again a matter of entirely different discussion. I am just
+saying what I think.
+
+This is a book on C as you already know by its name. However, this book will
+delve into topics not ventured together in many books. The most authoritative
+source on this subject is ofcourse K\&R's \quotation{The C Programming
+Language}. This book is not a replacement of the above book. It is a complement
+and supplement for the K\&R's (henceforth I will refer it as The C Book) book.
+However, C has undergone revision and latest standard being C99 which is not
+part of The C Book. Therefore, until a revision is made in the contents it
+will not reflect the changes in the standard. Several compilers are already
+supporting this standard. \type{gcc} already supports most of standard which is
+used in preparing this book.
+
+I believe in practical programs so sometimes code examples may span several
+files and pages. Please skip them if you are not interested. Sometimes toy
+examples are not simple.
+
+My thoughts jump from one topic to another and I capture them immediately so
+the book may seem rather wayward. I have tried my best to organize the topics
+but still the ordering may be not so good. Please use index. After all, that 
+is what indices are meant for! :-)
+
+Let us come back to the title. As you have seen it is \quotation{Learn Correct
+Programming}. There are various ways to program. However, programming paradigms
+associated with language does not enforce correctness in the sense of correct
+way. Two programming paradigms which are generic try to do it. One of them is
+\quotation{Literate Programming} and \quotation{Pair Programming}. Literate
+Programming is baby of greatest computer scientist alive in my humble opinion
+Donald Erwin Knuth. I am a big fan of Literate Programming, however, I can not
+enforce documentation or learning \TeX{} on a normal programmer. Pair
+programming is not always feasible and not particularly so in enterprise
+environment where the sole aim is to make money. However, if you can
+please use both of them as they will help you learn programming
+immensely. Programming requires discipline. Discipline in choosing
+correct language for the task, correct selection of algorithm, correct
+implementation and never to mention documentation and testing.
+
+As you may notice there is something called Part I C in this
+book. There is a reason that once this part will be finished I will
+put more parts probably C++ or some library uses like pthreads.
+
+\subject{Tools}
+You must choose your tools carefully as it may determine the direction
+your career is going in. If you want to Windows programmer choose MS
+Visual C++ Express Edition if that suits you else get cygwin or MSYS
+and MINGW. However, you can also choose GNU/Linux (free comes in many
+variations), MacOS X (not free and supposed to run only on Mac
+hardware but internally is Unix), OpenSolaris but at this moment it is
+lagging as only 2009 release is there.
+
+As compiler I use \type{gcc}, \type{gdb} as debugger, \type{emacs}
+along with viper-mode, cedet, Emacs class browser as my editor and
+ide. Emacs is fantastic because I can compile and debug right there in
+editor. Also, viewing manuals in Emacs is pretty easy for quick
+reference. But be warned Emacs has a steep learning curve and may be
+daunting who has only used Windows. It will feel better if someone
+entirely new to computers uses it. Also, Emacs has an in build shell,
+browser, and many other things which I do not even know. Best part is
+that if you want some functionality then it can be extended using
+Emacs-Lisp which is another programming language of its own type.
+I also use \type{valgrind} whenever I suspect a suble memory problem
+or thread problem. All these tools are licensed and cost nothing.
+
+\subject{Acknowledgements}
+The time when I am writing this book is very tough on my family and
+even then they have supported me. I can not show enough gratitude to
+my wife, parents and siblings. They have stood by me and my decisions
+to quit job which is a big change in our lives. I can not state how
+much the life of my parents have effected me.
+
+I thank my teachers Yogendra Yadav, Hriday Narayan Singh, Satyanand
+Satyarthi, Gopal, Shilesh Kumar, Praveen Kumar, Prod. T K Basu, Prof. S
+Sen, and Prof. S Banerjee for imparting their knowledge.
+
+At professional level I learnt a lot from two persons. First is Anurag
+Johri and second is Vibhav Saluja. They taught me several technical
+things and a lot more about life.
+
+On the programming side there are far too many people I mena whole
+Free Software Community, however, I will take some names. Donald Erwin
+Knuth, creator of \TeX{}, which has been used in preparation of this
+book, who is also author of many books like ``The Art of Computer
+Programming'' is first among them. Richard M Stallman is second but
+his contributions are more to life than software, however, that does
+not mean that he has done any less contribution on software side. He
+contributed to \type{gcc}, \type{gdb}, \type{emacs}, \TeX\type{Info},
+\type{ELisp} and may more things. His biggest contribution is free
+software movement. I also want to thank Hans Hagen who helped me with
+\ConTeXt{} which I used to finally process the contents of this book.
+I also used \type{vim} syntax highlighting module from Aditya Mahajan
+to highlight the source code given in this book. I am most grateful to
+all these nice people who believe in sharing the knowledge at source
+code level and not at binary level.
+
+English is not my native language and even though I have run spell
+check over buffers there are chances that grammatical and factual
+errrors are there. The reason is that it has not been proof-read and
+edited. All I can guarantee is that source code given runs on my
+machine. Please mail me your suggestions, errors which you have found
+to me at \from[shivshankar.dayal@gmail.com]. I will try to give
+reply to each of your mail.
+
+\startalignment[flushright]
+Shiv Shankar Dayal
+\stopalignment
+
+

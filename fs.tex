@@ -1,0 +1,147 @@
+\chapter{Following Specification}
+\startcolumns[n=3,distance=2em]
+  \placelist
+    [section]
+    [alternative=c, % a,
+     interaction=all,]
+\stopcolumns
+%In this chapter I will begin discussion with basic data types provided by C as
+%a programming language. These data types are also known as primitive data
+%types. Using these types we construct further slightly complex user-defined
+%data types.
+
+%\section{Basic Data Types}
+%There are six basic data types. They are \type{_Bool, char, int, float, long,
+%double}. There are certain modifiers which modify the ranges of these basic
+%data types. On my Ubuntu 10.04 I look at \type{/usr/include/limits.h} for the
+%values of these basic types. They are shown in the table given below:
+%\placetable
+%[here, force][tab:basic Types]{Basic Types and Their Sizes}
+%{\starttable[|l|l|l|]
+%\HL
+%\VL Data Type \VL Minimum Value  \VL  Maximum Value\VL\FR
+%\HL
+%\VL \_Bool\VL0\VL1\VL\MR
+%\HL
+%\VL Signed Char\VL -128\VL127\VL\MR
+%\HL
+%\VL Unsigned Char\VL 0\VL255\VL\MR
+%\HL
+%\VL Signed Short Integer\VL-32768\VL32767\VL\MR
+%\HL
+%\VL Unsigned Short Integer\VL 0\VL65535\VL\MR
+%\HL
+%\VL Signed Integer\VL-2147483648\VL2147483647\VL\MR
+%\HL
+%\VL Unsigned Integer\VL0\VL4294967295\VL\MR
+%\HL
+%\VL Signed Long\VL-2147483648\VL2147483647L\VL\MR
+%\HL
+%\VL Signed Long\VL-2147483648\VL2147483647\VL\MR
+%\HL
+%\VL Unsigned Long\VL0\VL4294967295\VL\LR
+%\HL
+%\stoptable}
+%Always remember that these values are for my machine. If your machine
+%is not the same then you need to figure that. Do not worry I will
+%write a program for you.
+
+At this point of time I would like to look back and refer to ISO/IEC
+9899:TC2 which is the C99 specification with me. Since my thoughts are
+random in nature I will try to follow the organization of content
+given in the specification.
+
+\section{Terms, Definitions, and Symbols}
+\startitemize[n]
+\item\type{access.}\textreference[access]~There are two parts of any
+program. Data and
+instruction. Programs are stored in file on some non-volatile storage for
+example, hard disk drive, cd, dvd, tape drive. When they are executed
+from non-volatile storage they are transferred to some volatile
+storage typically RAM (Random Access Memory) of the computer. When a
+program is executed it becomes a living entity capable of doing
+something and sometimes also referred as process. So when the contents
+of RAM (henceforth referred as memory) is either read or written (it
+does not matter whether the value is same or new) to then it is
+defined as access. Here point to be noted is that the expressions
+which will not be evaluated do not access objects.
+\item\type{alignment.}\textreference[alignment]~Say your program
+  requires x bytes of memory then it will not be always given x bytes
+  but something more. Say an object requires y bytes then it will be
+  always greater or equal to y bytes. This is required so that objects
+  are always located on storage boundaries that are particular
+  multiples of byte address. The reason for this alignment lies in
+  the efficiency of the operating system as a whole. As we know that
+  on 32-bit systems data bus is 32 bits similarly on 64-bit systems
+  it is 64 bits. This means in one fetch cycle (read up on this on
+  some microprocessor or computer architecture book) only 32-bits
+  can be fetched. 32-bits means 4 bytes. Oops! I did not tell you
+  about bits and bytes conversion. Not even nibble. However, since 4
+  bytes can be fetched in one cycle compiler tries to optimize the
+  data in group of 4 bytes. Given below are some examples.
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 4th, 2010
+ * Description: Demonstration of structure padding and memory alignment.
+ */
+#include <stdio.h>
+
+typedef struct
+{
+  char a;
+  int b;
+}A;
+
+typedef struct
+{
+  char a;
+  int b;
+  char c;
+  char d;
+  char e;
+  int f;
+}B;
+
+typedef struct 
+{
+  char x;
+  char y;
+  int z;
+}C;
+
+typedef struct 
+{
+  char x;
+  int z;
+  char y;
+}D;
+
+int main()
+{
+  A a;
+  B b;
+  C c;
+  D d;
+
+  printf("Size of structure %c is %d\n",'A',sizeof(a));
+  printf("Size of structure %c is %d\n",'B',sizeof(b));
+  printf("Size of structure %c is %d\n",'C',sizeof(c));
+  printf("Size of structure %c is %d\n",'D',sizeof(d));
+
+  return 0;
+}
+
+\stopCPP
+\index{align.c}
+\index{Memory Alignment Program}
+\hrule\blank[force,1mm]
+\startalignment[middle]
+Memory Alignment Program
+\stopalignment
+The output is shown below:
+\blank[force, 1mm]
+\useexternalfigure[alignment][figs/align.png]
+\placefigure{Output of align.c}{\externalfigure[figs/align.png][rscale=1.5]}
+\stopitemize

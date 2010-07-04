@@ -1,0 +1,355 @@
+\chapter{Introduction}
+\startcolumns[n=3,distance=2em]
+  \placelist
+    [section]
+    [alternative=c, % a,
+     interaction=all,]
+\stopcolumns
+All programs in this book were created using Emacs, gcc, gdb, and
+Valgrind  running on Ubuntu 10.04. However, these
+should run on any machine having a C99 compliant compiler.
+
+Not much of history I am going to tell. Dennis Ritchie designed and architected
+C programming language in late 1960s and early 1970s. It spread in the
+programming world along with Unix. Unix was developed by Ken Thompson. Both Ken
+and Dennis were colleagues at AT\&T Bell labs. C is a programming language which
+is simple, small yet powerful. I will not go in the discussion of low, high or
+middle level language as this is going to be a very informal book. When C
+became popular it was standardized by ANSI and latest revision is C99. In this
+book we will follow C99 standard and see what all is there. C is a matured
+programming language and has weatherd the test of time well. I love programming
+in C and so would you (probably :-)) because it is very simple compared to C++.
+Yes, I agree that object-oriented programming features are not there and there
+are certain problems in writing large scale code with C but again many very
+large systems have been written using C successfully.
+\index{Dennis+Ritchie}
+Theoretically, C++ is superior featurewise but C++ is complex as well and in
+order to properly learn C++ you must learn C first. Apart from C++ other
+languages like Java, Perl, Python, Ruby, Lua and many others have used C at some
+point of time. Essentially, you can say that C is the common denominator about
+which other systems have been developed. Linux kernel has been written using C.
+C is the standard programming language for any application of GNU operating
+system. I am not a proponent of C or anything I am just trying to make the
+reader, in this case you, aware of C capabilities.
+
+There are many programming paradigms with their own strengths. Some of them are
+structured programming, object-oriented programming, functional programming,
+and generic programming. C++ is a multi-paradigm language and C supports one
+which is structured programming. Obviously C is so simple that it can not
+support multiple paradigms. However, you can twist it a bit to accomodate other
+paradigms but that is not recommended.
+
+If you are new to programming and just picked up this book in some shop because
+name appearred to be catchy then please read following carefully. First question
+is \quotation{What is a programming language?} The answer is \quotation{A
+Programming language is a language in which you write a program.} Next question
+could be \quotation{What is a program?} Then answer would be {A program is an
+organized sequence of instructions to computer (Read processor. CPU or GPU or
+anything which can be programmed. However, in our case we will limit our
+discussins to CPU or central processing unit of computer and nothing else.)} By 
+organized sequence I mean that they must at least satisfy the syntatical
+requirements of programming  language. It does not matter whether the program is
+doing anything useful. This leads to another question and that is that what is
+an instruction. This leads us in to some sort of physics so I will touch it
+briefly in next sequence.
+
+A computer does not understand 0 or 1 or any other number let alone characters.
+All a computer understands in voltage levels. For the sake of discussion let us
+take 0V and 1.5V. We as human interpret 0V as 0 and 1.5V as 1 or vice-versa.
+However, this interpretation must be uniform across all computers of same type.
+Then we use binary bumber system to do basic arithmetic and convert them to
+digital and other number systems. We also use hexadecimal number system to 
+represent bytes as hexadecimal bumber is very compact and symbols for this
+number system are from 0 to 9 and A to F or a to f. Please do not ask me why
+base-32 was not used. Honestly, I do not know the answer. I guess probably
+because 32 is $2^5$ and 5 is not $2^n$ where n is an integer. Next number would
+have been $n=8$. This would mean having 256 symbols for denoting the number
+system which would be impractical for humans. Now coming back original question
+certain operations like addition, subtraction and other basic operations are
+implemented in hardware itself for certain width of numbers. For example, a
+typical 32-bit modern computer can add 2 32-bit integers with carry bit. These
+instructions have equivalent numbers assigned to them. So for example to
+computer you say \quotation{Add 5 and7}. This may translate to 13 5 7. 13 being
+instruction for addition 5 and 7 have their usual meaning. So it will be then
+converted to binary that is 1101 101 111. So accordingly volatage levels will
+change. For other characters like of English language or pucntuation characters
+or computer specific characters or mathematical or Greek symbols we have ASCII,
+or UTF-8, and UTF-16 tables. ASCII table is made up of 128 symbols.
+UTF-8 of 256 and UTF-16 of 65,536 symbols respo=ectively. UTF-16 can accomodate 
+all characters of all languages and everything at the moment. 
+
+So far so good. Now it is time to learn about C. A programming language is
+somewhat like a natural language for example, English or Chinese or Hindi or any
+other language. Now as you know each language has a set of alphabets, a
+dictionary and grammar. There are certain rules in natural languages. Similalry,
+C has a set of alphabets, a dictionary of reserved words and a BNF-grammar.
+Now since I have introduced the word BNF let me tell you about it a bit. BNF
+stands for Backus-Naur form. Probably it is wrong place to say about it but I do
+not like to hold information back. BNF grammar is actually a metasyntax which
+can be used for describing context-free grammars. For example, in C the compiler
+or the oparating system or computer will not know about the context of the
+program. Even then it works. The main use of BNF grammar is to describe lexical
+and syntatic rules of a programming language and a tool like lex and yacc or
+flex and bison can used this grammar to help you develop compiler for that
+language for which the grammar was writte. I will stop BNF discussion here as it
+is a subject of other books.
+
+\section{Alphabets, and Dictionary of C}
+Given below are the characters you can use in C programming language:\hfil\break
+\starttyping
+a-z A-Z 0-9 ~ ! # % ^ & * ( ) - = [ ] \ ; ' , . / _ + { } | : " < > ? 
+\stoptyping
+
+Given below is the dictionary pf C language as specified in C99 standard. These
+words are also kmnown as reserved words and can not be used other than what
+they are meant for. This \myin[tab: C Keywords] consists only of standard
+keywords so watch out for your compiler specific keywords.
+\placetable
+[here, force][tab: C Keywords]{C Keywords}
+{\starttable[|c| c| c| c|]
+\HL
+\VL auto \NC enum \NC  restrict \NC  unsigned\VL\FR
+\VL  break \NC extern \NC return \NC void \VL\FR
+\VL case \NC float \NC short \NC volatile\VL\FR
+\VL char \NC for \NC signed \NC while\VL\FR
+\VL const \NC goto \NC sizeof \NC \type{_}Bool\VL\FR
+\VL continue \NC if \NC static \NC \type{_}Complex\VL\FR
+\VL default \NC inline \NC struct \NC \type{_}Imaginary\VL\FR
+\VL do \NC int \NC switch \NC \VL\FR
+\VL double \NC long \NC typedef\NC  \VL\FR
+\VL else \NC register \NC union\NC  \VL\LR
+\HL
+\stoptable}
+
+\section{Tools of Trade}
+You will need a compiler, debugger, and a text editor. I use GCC as compiler,
+GDB as debugger and Emacs as text editor. All these three are free (free as in
+freedom not free beer)  programs licensed under GNU GPL. However, you can opt
+for Microsoft Visual Studio on Windows, XCode on Mac OSX which internally uses
+gcc, Kdevelop, Anjuta, Codelite or any other IDE on GNU/Linux. Some other IDEs
+are also available like Eclipse and Netbeans. I use emacs with cedet and
+ecb-bowser which gives me sufficinet power and ease of use. What you choose is
+your wish however if you use something like Turbo C++ then outputs may not
+match.
+
+Valgrind is another piece of software which is used to find memory leaks, heap
+corruption, cache corruption but at the moment it is only for GNU/Linux. DBX is
+another nice debugger for Solaris. You can also use mingw and msys on Windows or
+cygwin if you do not want to do a full install of GNU/Linux and still want to
+use same set of tools.
+
+For compilation there are various ways. I will use famous GNU Makefiles. 
+However, you learn something like autotools, cmake, scons, premake, bjam or some
+other good build system as per your choice.
+
+\section{First Program}
+This is the holy grail program of most of the books. \quotation{Hello, world}
+program is given below and all it does is that it prints "Hello, world!" and does
+nothing else.
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 3rd, 2010
+ * Description: It prints the string "Hello, world!"
+ */
+#include <stdio.h>
+
+int main()
+{
+  printf("Hello, world!\n");
+  return 0;
+}
+\stopCPP
+\index{hello.c}
+\index{stdio.h}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Hellow World Program
+\stopalignment
+To compile this program just type following at your command prompt if you are using
+one:
+
+\starttyping
+gcc hello.c
+\stoptyping
+gcc is the name of compiler and hello.c is the name of file in which you saved the 
+code shown above as. Assuming everything went fine you will have a file called
+{\bf a.out} if you are using a Unix-like system or {\bf a.exe} if using cygwin. For 
+IDEs it will typically depend upon the project name which you specified at the time 
+of project creation. Also, gcc must be in the {\bf PATH} environment variable which 
+is typically {\bf /usr/bin} on standard installation. Look up your system/compiler 
+manual. Once you have {\bf a.out} file you can execute or in other words run it.
+Given below is one such screeshot.\hfil\break
+\blank[force, 1mm]
+\useexternalfigure[hello][figs/hello.png]
+\placefigure{Output of hello.c}{\externalfigure[figs/hello.png][rscale=2.0]}
+As you can see first part which you notice is a block starting with /* and */. Such
+a block is called comment block and everything inside is ignored by the compiler.
+For example, compiler or the program or operating system or processor will have
+no Author or Date or Description with them. At the compilation time itself it is
+filtered. However, be careful of such nested comments for example, \type{/*
+something here*/ something else here */}. In such cases the program may not behave
+as expected.
+
+Next line is \type{#include <stdio.h>}. This is actually consists of two parts.
+First part is \type{#include}. It is a preprocessor directive. By using such 
+directories you can include any kind of file to your source code. There is another
+syntax associated which we will see later and why headers are required that also we
+will see. Second part is \type{<stdio.h>}. Angular brackets are syntatic sugar and
+the it can be written also like \type{"stdio.h"}, however, not always. stdio.h has
+got a single character extension 'h', which means header file. stdio can be 
+interpreted as standard input/output. However, note that stdio.h is not part of C99
+standard. This header and associated funciotnality is provided by compiler vendors.
+
+Next line is \type{int main()}. It declares a special funciton \type{main}. Every
+C executable will typically have one such function unless you are willing to
+program in assembly. main is the entry point of the program. The word \type{int}
+preceeding it is the return type of this funciton. \type{int} means integer. So,
+probably now you can guess that \type{main} is supposed to return an integer to its
+caller. In this case the called is the shell from which \type{./a.out} is being
+executed i.e. bash shell on my system. In your cases the system or entity calling
+\type{main} may be different. 
+
+Next you see two curly braces. Every function in C has at least two matching 
+braces. These braces define the function scope. What I mean is whatever code is 
+inside these two braces will be there will be part of logic of that function. At
+this point I should tell you that in C one function can call another function which
+is the very basic of structured programming on which C is based. In structure
+programming you break down the problem in sub-tasks and write one function for each
+of these tasks. If the sub-tasks are two big then you further break it down until
+it becomes manageable.
+
+As you see line number 10 is \type{printf("Hello, world!");}. This printf is also
+a function which takes a string as argument and can also take a variable number of
+argumnets as we will soon see. This function's prototype is defined in 
+\type{stdio.h} and the fumnctionality is in \type{libc.so} on Unix systems which
+typically resides in either \type{/libc} or \type{/usr/lib}. Please check your 
+system for its location. Prototype defines the way function should appear and 
+definition of that function is entirely different entity. The prototype and 
+function signature at the point of definition must match. Very soon we will see 
+them when we discuss formal and actual parameters.
+
+Line number 11 is \type {return 0;}. \type{return} is a keyword of C as you might
+have noticed the dictionary of C or rather keywords of C. When this keyword is
+encountered it will return whatever value is there just by the side of it which
+happens to be 0 in this case. Whenever a \type{return} statement is encountered
+the execution of that function terminates.
+
+You might have noticed \type{;} at two places. Every function call must terminate 
+with \type{;} and so as an statement like \type{return}. There may be more 
+possibilities of using \type{;} as we encounter them I will tell you about them.
+
+Now we have seen the holy grail so it is time for something holiest. I am talking
+about attributes of a program. What are the attributes of a program which you as a
+programmer must look for?
+
+\section{Attributes of a Program}
+All the programs are meants for different purposes. They may be small, large or
+mid-sized. However, there are certain criterium which apply to all of them which
+we are going to discuss here. Given below are some of them. There may
+be more but depending upon situation but never less.
+
+\startitemize[n]
+\item {\bf Correctness.} Every program has some purpose and it must fullfil that
+purpose without giving wrong solution. This is a mandatory requirement or
+attribute of a program. Without correctness a program has no meaning.
+\item {\bf Efficiency.} By efficiency I mean the program should consume less
+resources at the same time it gives output in least amount of time. Efficiency
+is an illusive or rather a trade-off goal. If you want less time then you consume
+more CPU power or RAM or vice-v versa.
+\item {\bf Robustness.} By robustness I mean the ability to handle errors and
+keep working in a normal way. If possible try to process the same input again
+and again for a configurable amount of time. The program must not crash or stop
+working in case of wrong input.
+\item{\bf Generic.} The program should be generic. However, this is typically
+not a requirement as most of the time you know what sort of data program is
+going to get as input. However, as a library programmer or system programmer
+your program must be valiod for a wide range rather type of inputs.
+\item{\bf Security.} The program should be secure. It does not matter whether
+the program is running as standalone application or interacting with different
+processes on the same machine or over a network. Any unauthorized entity must
+not be allowed to do things like stack overflow, integer overflow etc.
+\item{\bf Maintainability.} Typically the period for which a program is maintained
+far exceeds the period of development. So the program must be maintainable.
+Also, by maintainable I mean easily maintainable not someone has to take pain
+to maintain it.
+\item{\bf Extensibility.} The program should be extensible. It should be written
+in such a way that modification to program does not effect it adversely.
+\item{\bf Comprehensibility.} The source code of the program should be easy to
+comprehend. Remember easy-to-read and easy-to-understand are two different
+things and easy-to-comprehend combines both. This is a precondition for
+maintainability.
+\item{\bf Documentation.} Source code must be documented well. Again this is a
+precondition for maintainability and comprehensibility.
+\item{\bf Portability.} Again, it is an elusive goal and depends on the
+requirement of the program you are writing. One of the easiest ways to achieve
+is to stick to the standards of the problem domain and programming language
+in use.
+\stopitemize
+
+\section{\type{printf} and \type{scanf}}
+I will tell you about two input and output functions which you will be using a
+lot in the beginning. Therefore, it is better to know them straightaway. Frist
+function is and output function which you have already seen. Remember
+\type{printf}. Similarly other function is for input having name \type{scanf}.
+So first we will take a look at \type{printf}. By no means this topic is going
+to cover all the details but only the basics. We will revisit this topic in
+input/output chapter. It has following prototype in
+your known header \type{stdio.h}:
+\placefigure{Declaration of \type{printf}}
+{
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+int printf(const char *format, ...);
+\stopCPP
+\hrule
+}
+\index{printf}
+The string \type{const char *format} is what we have seen in out program. The
+more interesting one is triple dot. This implies that function can take variable number
+of arguments. I will give you one such example \type{printf("%d %d %f\n", 3, 6,
+7.5);}. For the sake of testing just change hello.c with this new one compile
+and see the put put. You will see 3 6 7.50000 (How 7.5 became 7.50000? I will
+tell you this when we discuss floating-point numbers) on your screen probably.
+We can\ similary send one or more arguments to \type{printf}. You can also see
+that \type{printf} is returning and integer as we discussed for main. The value
+of integer will reflect that how many characters are printed. \type{printf}
+prints everything on STDOUT which is nothing but the display or monitor or screen.
+However, if \type{printf} fails it returns a negative integer.
+\subsection{Format Argument of \type{printf}}
+The format is a character string.  It is composed of zero  or  more directives: 
+ordinary characters (not \%), which are copied unchanged to the STDOUT; and 
+format specifiers, each resulting in fetching zero or more subsequent arguments. 
+Each format specifier is introduced by the character \%, and ends with a format
+specifier.
+
+In between  there  may be zero or more flags, an optional minimum field width,
+an optional precision and an optional length modifier.
+
+The arguments must correspond properly (after type promotion) with the format
+specifier. By default, the arguments are used  in the order given, where
+each  `*' and each format specifier asks for the next argument (and it is an
+error if insufficiently many arguments are given).
+
+For mor information just type \type{man 3 printf} on your unix system and you
+should see even more information. Do not worry we will cover them as we need
+them.
+\subsection{\type{scanf}}
+\type{scanf} is similar to \type{printf} but opposite in nature. Let us see
+its declaration.
+\placefigure{Declaration of \type{scanf}}
+{
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+int scanf(const char *format, ...);
+\stopCPP
+\hrule
+}
+\index{scanf}
+The usage are slightly different as we will see soon. This concludes our
+discussion for first chapter. In the next chapter we will talk about basic
+building blocks of a program like data types, operators, expressions and
+control flows.
+
