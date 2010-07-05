@@ -52,7 +52,7 @@ random in nature I will try to follow the organization of content
 given in the specification. However, note that I will not include all
 the contents of specification and will exclude some of very obvious
 and trivial sections/subsections. The following terms, definitions and
-symbols have come from specification, however, some are ommitted for
+symbols have come from specification, however, some are omitted for
 the sake of conciseness. Once again I will repeat that at times I will
 do a verbatim copy just for quick reference and then add an
 explanation to that.
@@ -62,7 +62,7 @@ explanation to that.
 \item\type{access.}\textreference[access]~~There are two parts of any
 program. Data and
 instruction. Programs are stored in file on some non-volatile storage for
-example, hard disk drive, cd, dvd, tape drive. When they are executed
+example, hard disk drive, CD, DVD, tape drive. When they are executed
 from non-volatile storage they are transferred to some volatile
 storage typically RAM (Random Access Memory) of the computer. When a
 program is executed it becomes a living entity capable of doing
@@ -152,7 +152,8 @@ The output is shown below:
 \placefigure{Output of
   align.c}{\externalfigure[figs/align.png][rscale=1.5]}
 I am always showing screenshots of program's output but now onwards I
-will not show them as they just consume space.
+will not show them as they just consume space. I will also explain the
+output at a later stage when you will understand \type{struct}.
 \item\type{argument}\textreference[argument]~~Actually you have seen
   this when I discussed the \type{printf} and \type{scanf} functions
   in Chapter 1. Sometimes they are also called actual parameters but
@@ -185,9 +186,9 @@ will not show them as they just consume space.
   should be large enough to store one of two values. These
   values are as mentioned in Chapter 1.
 \item\type{byte}\textreference[byte]~~This is what is written in
-  specificaiton. ``addressable unit of data storage large enough to
+  specification. ``addressable unit of data storage large enough to
   hold any member of the basic character set of the execution
-  environment''. Since the very basic chcaracter set of C is
+  environment''. Since the very basic character set of C is
   \type{char} which has size
   of 1 byte. However, \type{char} is defined as an integral value
   having 256 distinct numbers. 256 being equal to $2^8$ implies that a
@@ -202,7 +203,7 @@ will not show them as they just consume space.
 \item\type{multi-byte character}\textreference[multi-byte
   character]~~It is specified as sequence of one or more bytes,
   however, when more comes then it can be more than two or three or
-  any integer. But for all practical puposes UTF-16 serves the usage.
+  any integer. But for all practical purposes UTF-16 serves the usage.
 \item\type{wide character}\textreference[wide character]~~It is
   specifies as sequence of bits which can fit in an object of type
   \type{wchar_t}. Using \type{wchar_t} we can represent any symbol of
@@ -218,7 +219,7 @@ will not show them as they just consume space.
   data storage in the execution environment (CPU or RAM), the content
   of which can represent values. These values are always concrete in
   nature and at any moment are finite. I say so because CPU or RAM
-  will store bits which will always be some finite boolean voltage
+  will store bits which will always be some finite Boolean voltage
   levels. I will also mean this as an instance of declaration of a
   data type primitive or non-primitive data type because these
   instances will have these voltage levels in the execution
@@ -242,6 +243,19 @@ will not show them as they just consume space.
   value}\textreference[implementation-defined value]~~It is a value
   which is unspecified in specification and implementation documents
   everything about it like how it is generated.
-
+\item\type{indeterminate value}\textreference[indeterminate
+  value]~~Indeterminate values are those which can not be determined
+  at any particular point of time with accuracy. For example,
+  unspecified values and trap representations.
+\item\type{unspecified value}\textreference{unspecified value}~~Any
+  object can have multiple values one at a point of time. When
+  specification does not require that implementation chooses any one
+  of them particularly then it is called unspecified value.
 \stopitemize
+\item{$\lceil x\rceil$}\textreference[ceilx]~~This has usual meaning
+  that is ceiling of x.
+\item{$\lfloor x\rfloor$}\textreference[floorx]~~This has usual meaning
+  that is floor of x.
 \stopitemize
+This concludes our discussion on terms, definitions and symbols. We
+will proceed with more of specification in next chapter.
