@@ -1,8 +1,4 @@
-/*
- * Author: Shiv Shankar Dayal
- * Date: July 4th, 2010
- * Description: Demonstration of structure padding and memory alignment.
- */
+
 #include <stdio.h>
 
 typedef struct
