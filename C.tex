@@ -1,9 +1,11 @@
 %interface=en --mode=screen
 \usemodule[simplefonts,vim,mathml,database]
-%\setmainfont[Arial]
-%\setsansfont[]
-%\setmonofont[Latin Modern Mono]
-%\setupbodyfont[Arial,10pt]
+\setmainfont[HelveticaLTStd-Light]
+\setsansfont[HelveticaLTStd-Light]
+\setmonofont[Courier]
+\setmathfont[HelveticaLTStd-Light]
+\setupsimplefonts[size=9pt]
+
 \unprotect
 \definepapersize
   [manual]
@@ -53,19 +55,19 @@
 
 \preloadtypescripts
 
-\definetypeface[mainfacenormal]  [rm][serif] [modern]       [default]
-\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
-\definetypeface[mainfacenormal]  [tt][mono] [modern]      [default]
-\definetypeface[mainfacenormal]  [mm][math] [modern]       [default]
+%\definetypeface[mainfacenormal]  [rm][serif] [modern]       [default]
+%\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
+%\definetypeface[mainfacenormal]  [tt][mono] [modern]      [default]
+%\definetypeface[mainfacenormal]  [mm][math] [modern]       [default]
 
-\definetypeface[mainfacemedium]  [rm][serif] [modern][default]
-\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
-\definetypeface[mainfacemedium]  [tt][mono] [modern]      [default]
-\definetypeface[mainfacemedium]  [mm][math] [modern][default]
+%\definetypeface[mainfacemedium]  [rm][serif] [modern][default]
+%\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
+%\definetypeface[mainfacemedium]  [tt][mono] [modern]      [default]
+%\definetypeface[mainfacemedium]  [mm][math] [modern][default]
 
-\definetypeface[mainfacenarrowtt][tt][mono] [modern] [default]
+%\definetypeface[mainfacenarrowtt][tt][mono] [modern] [default]
 
-\setupbodyfont[mainfacenormal,11pt]
+%\setupbodyfont[mainfacenormal,11pt]
 
 \definehead
   [remark]
@@ -81,7 +83,7 @@
 
 \setupcolors
   [state=start]
-
+\setupurl[state=start,color=blue]
 \setuptyping
   [color=blue,
 ]%   style=\mainfacenarrowtt]
@@ -209,6 +211,7 @@
 \stopstandardmakeup
 \input{introduction.tex}
 \input{fs.tex}
+\input{env.tex}
 \startbackmatter
 \completeindex[interaction=all]
 \stopbackmatter
