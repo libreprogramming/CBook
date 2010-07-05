@@ -51,7 +51,11 @@ At this point of time I would like to look back and refer to ISO/IEC
 random in nature I will try to follow the organization of content
 given in the specification. However, note that I will not include all
 the contents of specification and will exclude some of very obvious
-and trivial sections/subsections.
+and trivial sections/subsections. The following terms, definitions and
+symbols have come from specification, however, some are ommitted for
+the sake of conciseness. Once again I will repeat that at times I will
+do a verbatim copy just for quick reference and then add an
+explanation to that.
 
 \section{Terms, Definitions, and Symbols}
 \startitemize[n]
@@ -180,4 +184,64 @@ will not show them as they just consume space.
   important entity in programming that is a bit. Specification says it
   should be large enough to store one of two values. These
   values are as mentioned in Chapter 1.
+\item\type{byte}\textreference[byte]~~This is what is written in
+  specificaiton. ``addressable unit of data storage large enough to
+  hold any member of the basic character set of the execution
+  environment''. Since the very basic chcaracter set of C is
+  \type{char} which has size
+  of 1 byte. However, \type{char} is defined as an integral value
+  having 256 distinct numbers. 256 being equal to $2^8$ implies that a
+  byte in C is made up of 8-bits.
+\item\type{character}\textreference[character]~~It is specified as a
+  set of elements used for organization, control and representation of
+  data.
+  \startitemize[R]
+\item\type{single-byte character}\textreference[single-byte
+  character]~~It is specified as bit representation that fits in a
+  byte. This confirms our calculation of number of bits in a byte.
+\item\type{multi-byte character}\textreference[multi-byte
+  character]~~It is specified as sequence of one or more bytes,
+  however, when more comes then it can be more than two or three or
+  any integer. But for all practical puposes UTF-16 serves the usage.
+\item\type{wide character}\textreference[wide character]~~It is
+  specifies as sequence of bits which can fit in an object of type
+  \type{wchar_t}. Using \type{wchar_t} we can represent any symbol of
+  UTF-16 character set. It is a two-byte character.
+\stopitemize
+\item\type{forward reference}\textreference[forward reference]~~You
+  can look up element 3.11 of specification for it. By forward
+  reference I mean that the complete type is not known or it is an
+  {\it incomplete type} where used.
+\item\type{3.12 and 3.13}\textreference[3.12 and 3.13]~~Please look
+  this up in specification at respective places in specification.
+\item\type{object}\textreference[object]~~It is specified as region of
+  data storage in the execution environment (CPU or RAM), the content
+  of which can represent values. These values are always concrete in
+  nature and at any moment are finite. I say so because CPU or RAM
+  will store bits which will always be some finite boolean voltage
+  levels. I will also mean this as an instance of declaration of a
+  data type primitive or non-primitive data type because these
+  instances will have these voltage levels in the execution
+  environment. When we access \at[access] these objects then we use
+  the very basic nature of these objects that is type of these objects
+  and interpret the values accordingly.
+\item\type{parameter}\textreference[parameter]~~These are called
+  formal parameters or formal argument. The usage of word formal
+  argument is deprecated. These are very similar to actual arguments
+  but these acquire value only after function is entered. At the time
+  of declaration or definition these have no values. Same concept of
+  macros which were applicable for \at[argument].
+\item\type{value}\textreference[value]~~The specification says in
+  section 3.17 that value is ``precise meaning of the contents of an
+  object when interpreted as having a specific type''. However, I
+  would like to replace the word precise with accurate as both the
+  words have different meaning and here accurate is what is more
+  suitable.
+\startitemize[R]
+\item\type{implementation-defined
+  value}\textreference[implementation-defined value]~~It is a value
+  which is unspecified in specification and implementation documents
+  everything about it like how it is generated.
+
+\stopitemize
 \stopitemize
