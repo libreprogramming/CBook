@@ -8,6 +8,6 @@
 #Disclaimer: Any damage or loss of data because of programs given in this
 #will bear no responsibility to author under any circumstances.
 
-OBJECTS=C.tex preface.tex introduction.tex fs.tex env.tex
+OBJECTS=C.tex preface.tex introduction.tex fs.tex env.tex 
 c.pdf: $(OBJECTS)
 	context --automp --mode=screen C.tex

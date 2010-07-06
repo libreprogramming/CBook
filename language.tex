@@ -1,0 +1,142 @@
+%Copyright (C) 2010, shiv Shankar Dayal
+%This file is part of Learn Correct programming.
+
+%This book is free document. All conditions of GNU FDL are applicable.
+
+%YOu should have received a copy of the GNU FDL 
+%along with this software.  If not, see <http://www.gnu.org/licenses/>.
+%Disclaimer: Any damage or loss of data because of programs given in this
+%will bear no responsibility to author under any circumstances.
+
+\chapter{Language}
+\startcolumns[n=3,distance=2em]
+  \placelist
+    [section]
+    [alternative=c, % a,
+     interaction=all,]
+\stopcolumns
+Finally, I can breathe relief. Explaining last chapter was not fun at
+all because that involved very little code. However, this is going to
+be the main chapter which will describe most of the things about the
+language.
+
+\section{Concepts}
+\subsection{Scope of Identifiers}
+Here we are going to talk about scope of identifiers. First question
+is what an indentifier. As its name implies it identifies. Next
+question is what does it identify. Well, an identifier can identify
+any element of programming language; here I will restrict the notation
+to identntification of an object; a function; a tag or a member of a
+structure, union, or enumeration; a typedef name; a label name; a
+macro name; or a macro parameter. Let us try to learn through one example.
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 5th, 2010
+ * Description: Function and block scope of identifiers.
+ */
+
+#include <stdio.h>
+
+int main()
+{
+  int i=5;
+  if(i==5)
+    {
+      int i=7;
+      printf("i=%d\n",i);
+    }
+  printf("i=%d\n",i);
+
+  return 0;
+}
+
+\stopCPP
+\index{scope+funciton, block+identifer}
+\index{idscope.c}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Program for funciton block scope of identifier.
+\stopalignment
+If you see the output first i will be reported as 7 and second one
+will be reported as 5. Here i is the identifier of \type{int}
+data-type. Macro names and macro parameters can not be considered as
+they are replace at the preprocessing stage itself and are not part of
+symbol table but every identifer is part of symbol table. The first i
+is at funciton scope and second i at block scope. We will soon see
+file scope when we discuss multiple file programs.
+
+The region for which the identifier is visible is called
+scope. Suppose we would not have remove \type{int i=5;} and modified
+\type{if(i==5)} to \type{if(1)} then second \type{printf} would have
+generated a compile-time error. Please check this and also please use
+the compilation commands with \type{--switch=c99} flag unless you are
+maintaining legacy code. I hate it. The reason for second printf
+reporting error is simple because it just does not know about identifier
+\type{i}. There are four different scopes for identifiers and they
+are: function, file, block, and function prototype. The example shown
+above demonstrates the block scope of an identifier. A label name that
+is label of \type{goto} is only identifier which has function scope
+and this is the reson why \type{goto}s can not jump outside functions.
+
+Structure, union, and enumeration tags have scope that begins just
+after the appearance of the tag in a type specifier that declares the
+tag. Each enumeration constant has scope that begins just after the
+appearance of its defining enumerator in an enumerator list. Any other
+identifier has scope that begins just after the completion of its
+declarator.
+
+At this point of time I think it is necessary to tell you about
+certain compilation flags as programs may not involve simple concepts.
+\subsubsection{Compilation Flags}
+Please use following compilation flags when programming for
+debugging. It is my set and you may add more.
+\starttyping
+-g -Wall -Werror  -std=c99 -pedantic-errors  -Wfatal-errors -Wextra
+\stoptyping
+
+I am just providing you what happens when I compile with these options
+the program shown above.
+\starttyping
+shiv@ubuntu:~/CBook/code/chap5$ gcc -v -g -Wall -Werror  -std=c99 -pedantic-errors  -Wfatal-errors -Wextra idscope.c 
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.4.3-4ubuntu5' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --enable-shared --enable-multiarch --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --program-suffix=-4.4 --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-plugin --enable-objc-gc --enable-targets=all --disable-werror --with-arch-32=i486 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) 
+COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99' '-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic' '-march=i486'
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/cc1 -quiet -v idscope.c -D_FORTIFY_SOURCE=2 -quiet -dumpbase idscope.c -mtune=generic -march=i486 -auxbase idscope -g -Wall -Werror -pedantic-errors -Wfatal-errors -Wextra -std=c99 -version -fstack-protector -o /tmp/ccvrlj1a.s
+GNU C (Ubuntu 4.4.3-4ubuntu5) version 4.4.3 (i486-linux-gnu)
+	compiled by GNU C version 4.4.3, GMP version 4.3.2, MPFR version 2.4.2-p1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/local/include/i486-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../i486-linux-gnu/include"
+ignoring nonexistent directory "/usr/include/i486-linux-gnu"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/include-fixed
+ /usr/include
+End of search list.
+GNU C (Ubuntu 4.4.3-4ubuntu5) version 4.4.3 (i486-linux-gnu)
+	compiled by GNU C version 4.4.3, GMP version 4.3.2, MPFR version 2.4.2-p1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 5998ce5f1765e99eea5269f4c1e38d44
+COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99' '-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic' '-march=i486'
+ as -V -Qy -o /tmp/ccyh2504.o /tmp/ccvrlj1a.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/i486-linux-gnu/
+COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99' '-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic' '-march=i486'
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_i386 --hash-style=both -dynamic-linker /lib/ld-linux.so.2 -z relro /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/i486-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/i486-linux-gnu/4.4.3 -L/usr/lib/gcc/i486-linux-gnu/4.4.3 -L/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/i486-linux-gnu/4.4.3/../../.. -L/usr/lib/i486-linux-gnu /tmp/ccyh2504.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i486-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crtn.o
+shiv@ubuntu:~/CBook/code/chap5$ 
+\stoptyping
+
+The \type{-v} option was just given for verbose output else it will
+show nothing as program is a valid program. Please do not include it
+in normal compilations.
+
+\subsection{Linkage of Identifiers}

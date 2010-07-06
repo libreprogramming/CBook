@@ -171,7 +171,6 @@
   \else
     \csname in#1\endcsname[#1:#2]%
   \fi}
-
 \starttext
 %Hans's setup for headers
 \setuppagenumbering[state=start,alternative=doublesided]
@@ -204,6 +203,25 @@
   \vfill
 \stopalignment
 \stopstandardmakeup
+\pagebreak
+\startstandardmakeup
+\startalignment[center]
+\vfill
+\definedfont[Serif at 16pt]\setstrut \strut Dedicated to my family and
+  Free Software Community. 
+\vfill
+\stopalignment
+\stopstandardmakeup
+\pagebreak
+\startstandardmakeup
+\vfill
+Copyright \copyright Shiv Shankar Dayal.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation. However,
+modifications must pass through me and no forking is allowed. This is
+an additional requirement.
+\stopstandardmakeup
 \completecontent
 \completelistoftables
 \completelistoffigures
@@ -222,6 +240,7 @@
 \input{introduction.tex}
 \input{fs.tex}
 \input{env.tex}
+\input{language.tex}
 \startbackmatter
 \completeindex[interaction=all]
 \stopbackmatter
