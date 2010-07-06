@@ -140,3 +140,130 @@ show nothing as program is a valid program. Please do not include it
 in normal compilations.
 
 \subsection{Linkage of Identifiers}
+We have seen identifiers and function and block scopes. Now the next
+question is it is possible to make two different identifiers identify
+same object or rather have them refer to same object. It is very much
+possible and the concept is called linkage. There are three types of
+linkages: external, internal and none.
+
+As we have seen the static, synamic libraries and executables may or
+may not contain one or more translation units. If more than one
+translation units are involved in a complete program (may be a library
+or executable), each declaration of each identifier with external
+linkage denotes the same object or function. It is slightly difficult
+to explain here as I have not yet covered some concepts like
+funcitons apart from printf and scanf. Functions in C are always at
+file scope. However, function from one file may call funciton residing
+in another file even if both are part of two different translation
+units. This is one very simple example of external linkage. Each
+identiffier having internal linkage in one translation unit always
+refer to same object. Example is static global variable which have
+file scope. Do not worry about words static and global. Identifiers
+having no linkage always refer to unique entities.
+
+I will quote following from specification \quotation{For an identifier
+declared with the storage-class specifier extern in a scope in which
+a prior declaration of that identifier is visible, if the prior
+declaration specifies internal or external linkage, the linkage of the
+identifier at the later declaration is the same as the linkage
+specified at the prior declaration. If no prior declaration is
+visible, or if the prior declaration specifies no linkage, then the
+identifier has external linkage.}
+Say, we have a global varibale with externnal linkage and and there
+exists visibility of this declaration then the linkage will be same as
+prior declaration. It will be best served with an example. Please see
+the following code and try to figure why it is happening even if
+\type{extern int i} is at block scope in vis2.c. Remember that
+visibility is controlled by scope.
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 5th, 2010
+ * Description: Linkage of identifiers.
+ */
+
+#ifndef _VIS_H_
+#define _VIS_H
+
+void f();
+
+#endif
+\stopCPP
+\index{linkage+visibility}
+\index{vis.h}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Header for scope and linkage.
+\stopalignment
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 5th, 2010
+ * Description: Linkage of identifiers.
+ */
+
+#include <stdio.h>
+#include <vis.h>
+int i;
+
+int main()
+{
+  i=5;
+
+  f();
+
+  printf("i=%d",i);
+  return 0;
+}	
+\stopCPP
+\index{vis1.c}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Program for scope and llinkage.
+\stopalignment
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 5th, 2010
+ * Description: Linkage of identifiers.
+ */
+
+#include <stdio.h>
+#include <vis.h>
+
+void f()
+{
+  extern int i;
+
+  printf("i=%d\n",i);
+	
+  i=9;
+}\stopCPP
+\index{vis2.c}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Program for scope and linkage.
+\stopalignment
+Since I have not compiled muliple file together I give you the
+command: \type{gcc -std=c99 vis1.c vis2.c -I/path-to-vis.h}. Testing
+and coding for second half is left as an exercise to reader.
+
+If the declaration of an identifier of a function has no storage-class
+modifier like static, then it defaults to extern linkage. If an
+object has no storage-class modifier like auto, static etc and object
+has file scope then linkage is external. For example, funcitons.
+
+An identifier declared to be anything other than an object or a
+function; an identifier declared to be a function parameter; a block
+scope identifier for an object declared without the storage-class
+specifier extern all these have no linkage. For example a our
+identifier i in program idscope.c at block level.
+
+If, within a translation unit, the same identifier appears with both
+internal and external linkage, the behavior is undefined. Let us see
+how it bahaves.
