@@ -99,15 +99,34 @@ debugging. It is my set and you may add more.
 
 I am just providing you what happens when I compile with these options
 the program shown above.
-\starttyping
-shiv@ubuntu:~/CBook/code/chap5$ gcc -v -g -Wall -Werror  -std=c99 -pedantic-errors  -Wfatal-errors -Wextra idscope.c 
+
+\startcode
+shiv@ubuntu:~/CBook/code/chap5$ gcc -v -g -Wall -Werror  -std=c99
+-pedantic-errors  -Wfatal-errors -Wextra idscope.c  
 Using built-in specs.
 Target: i486-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.4.3-4ubuntu5' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --enable-shared --enable-multiarch --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --program-suffix=-4.4 --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-plugin --enable-objc-gc --enable-targets=all --disable-werror --with-arch-32=i486 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+4.4.3-4ubuntu5'
+--with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs
+--enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr
+--enable-shared --enable-multiarch --enable-linker-build-id
+--with-system-zlib --libexecdir=/usr/lib --without-included-gettext
+--enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4
+--program-suffix=-4.4 --enable-nls --enable-clocale=gnu
+--enable-libstdcxx-debug --enable-plugin --enable-objc-gc
+--enable-targets=all --disable-werror --with-arch-32=i486
+--with-tune=generic --enable-checking=release --build=i486-linux-gnu
+--host=i486-linux-gnu --target=i486-linux-gnu
 Thread model: posix
 gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) 
-COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99' '-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic' '-march=i486'
- /usr/lib/gcc/i486-linux-gnu/4.4.3/cc1 -quiet -v idscope.c -D_FORTIFY_SOURCE=2 -quiet -dumpbase idscope.c -mtune=generic -march=i486 -auxbase idscope -g -Wall -Werror -pedantic-errors -Wfatal-errors -Wextra -std=c99 -version -fstack-protector -o /tmp/ccvrlj1a.s
+COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99'
+'-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic'
+'-march=i486' 
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/cc1 -quiet -v idscope.c
+ -D_FORTIFY_SOURCE=2 -quiet -dumpbase idscope.c -mtune=generic
+ -march=i486 -auxbase idscope -g -Wall -Werror -pedantic-errors
+ -Wfatal-errors -Wextra -std=c99 -version -fstack-protector -o
+ /tmp/ccvrlj1a.s  
 GNU C (Ubuntu 4.4.3-4ubuntu5) version 4.4.3 (i486-linux-gnu)
 	compiled by GNU C version 4.4.3, GMP version 4.3.2, MPFR version 2.4.2-p1.
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -125,15 +144,39 @@ GNU C (Ubuntu 4.4.3-4ubuntu5) version 4.4.3 (i486-linux-gnu)
 	compiled by GNU C version 4.4.3, GMP version 4.3.2, MPFR version 2.4.2-p1.
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 5998ce5f1765e99eea5269f4c1e38d44
-COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99' '-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic' '-march=i486'
+COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99'
+'-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic'
+'-march=i486' 
+\stopcode
+\startcode
  as -V -Qy -o /tmp/ccyh2504.o /tmp/ccvrlj1a.s
-GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.20.1-system.20100303
-COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/i486-linux-gnu/
-COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99' '-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic' '-march=i486'
- /usr/lib/gcc/i486-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_i386 --hash-style=both -dynamic-linker /lib/ld-linux.so.2 -z relro /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/i486-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/i486-linux-gnu/4.4.3 -L/usr/lib/gcc/i486-linux-gnu/4.4.3 -L/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/i486-linux-gnu/4.4.3/../../.. -L/usr/lib/i486-linux-gnu /tmp/ccyh2504.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i486-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crtn.o
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU
+Binutils for Ubuntu) 2.20.1-system.20100303 
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:
+/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/
+:/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.3/:/usr/lib/gcc/i486-linux-gnu/4.4.3/:
+/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:
+/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/i486-linux-gnu/
+COLLECT_GCC_OPTIONS='-v' '-g' '-Wall' '-Werror' '-std=c99'
+'-pedantic-errors' '-Wfatal-errors' '-Wextra' '-mtune=generic'
+'-march=i486' 
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr
+ -m elf_i386 --hash-style=both -dynamic-linker /lib/ld-linux.so.2 -z
+ relro /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crt1.o
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crti.o
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/crtbegin.o
+ -L/usr/lib/gcc/i486-linux-gnu/4.4.3
+ -L/usr/lib/gcc/i486-linux-gnu/4.4.3
+ -L/usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib -L/lib/../lib
+ -L/usr/lib/../lib
+ -L/usr/lib/gcc/i486-linux-gnu/4.4.3/../../.. -L/usr/lib/i486-linux-gnu
+ /tmp/ccyh2504.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc
+ --as-needed -lgcc_s --no-as-needed
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/crtend.o
+ /usr/lib/gcc/i486-linux-gnu/4.4.3/../../../../lib/crtn.o 
 shiv@ubuntu:~/CBook/code/chap5$ 
-\stoptyping
+\stopcode
 
 The \type{-v} option was just given for verbose output else it will
 show nothing as program is a valid program. Please do not include it
@@ -197,6 +240,7 @@ void f();
 \startalignment[middle]
 Header for scope and linkage.
 \stopalignment
+\blank[force,1mm]\hrule\blank[force,1mm]
 \startCPP
 /*
  * Author: Shiv Shankar Dayal
@@ -265,5 +309,43 @@ specifier extern all these have no linkage. For example a our
 identifier i in program idscope.c at block level.
 
 If, within a translation unit, the same identifier appears with both
-internal and external linkage, the behavior is undefined. Let us see
-how it bahaves.
+internal and external linkage, the behavior is undefined. Writing a
+program is left as an exercise to reader.
+
+\subsection{Name Spaces of Identifiers}
+It is very much possible in C to have name clashes when one
+declaration of a particular identifier is visible at any point in a
+translation unit, the syntactic context disambiguates 
+uses that refer to different entities. The reason for these clashes is
+because C does not have a feature which is there in caled
+\type{namesapce}. It is one of the keywords of C++. Thus, there are
+separate name spaces for various categories of identifiers, as follows: 
+\startitemize[n]
+\item label names (disambiguated by the syntax of the label
+  declaration and use); 
+\item the tags of structures, unions, and enumerations (disambiguated by following any)
+  of the keywords struct, union, or enum). There are three namespaces
+  possible but only one is usedl.
+\item the members of structures or unions; each structure or union has a separate name
+  space for its members (disambiguated by the type of the expression used to access the
+  member via the . or -> operator);
+\item all other identifiers, called ordinary identifiers (declared in ordinary declarators or as
+  enumeration constants).
+\stopitemize
+
+\subsection{Storage Duration of Identifiers}
+Storage duration is the lifetime of an object of any entity or
+data-type for which it lives in memory. There are three storage
+durations and they are: static, automatic and allocated. static
+storage duration is achieved by static keyword. All local variables of
+a funciton have automatic storage duration however you can declare
+them explicitly using keyword \type{auto} but that is not required.
+
+As long as an object's storage duration has not expired it is
+guarateed that object will exist and it will have certain finite
+value. It also has a constant address (that is physical memory
+address). It also retains its last-stored value. If an object is
+referred to outside of its lifetime then its behavior is
+undefined. The value of a pointer becomess indeterminate when the
+object it points to reaches the end of its lifetime, such a pointer is
+also called dangling pointer (it is not a standards term).

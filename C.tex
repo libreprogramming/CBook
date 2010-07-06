@@ -19,18 +19,28 @@
 \unprotect
 \definepapersize
   [manual]
-  [\c!width=21.6cm,
-   \c!height=27.9cm]
+  [\c!width=15cm,
+   \c!height=22.5cm]
 
 \definepapersize
   [screen]
-  [\c!width=21.6cm,
-   \c!height=27.9cm]
+  [\c!width=15cm,
+   \c!height=22.5cm]
 
 \setuppapersize
-  [A4]
+  [manual]
   [screen]
+\defineframedtext
+  [framedcode]
+  [strut=yes,
+   offset=0mm,
+   width=12cm,
+   align=flushleft]
 
+\definetyping[code][numbering=line,
+                    bodyfont=small,
+                    before={\startframedcode},
+                    after={\stopframedcode}]
 %toc
 \setupcolors[state=start]
 % turn off numbering of some levels
