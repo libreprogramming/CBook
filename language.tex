@@ -348,4 +348,146 @@ address). It also retains its last-stored value. If an object is
 referred to outside of its lifetime then its behavior is
 undefined. The value of a pointer becomess indeterminate when the
 object it points to reaches the end of its lifetime, such a pointer is
-also called dangling pointer (it is not a standards term).
+also called dangling pointer (it is not a standard term). That is if
+ptr is a pointer and its lifetime has expired then in most probable
+case you will get a SIGSEGV or segmentation fault on Unix systems.
+
+Any object with internal or external linkage like global variables and
+static storage class variables will have static storage duration. The
+lifetime of static storage duration is lifetime and initialization can
+take place only once where it is declared, prior program execution.
+
+An object's with no linkage and no static storage associated with
+it has automatic storage duration. For example, variables local to a
+function or block or loop counters.
+
+For a non-variable length array type (that is no pointers), its
+lifetime extends from entry into the black with which it is associated
+until execution of that block ends in any way. Entering an enclosed
+block or calling a function suspends, bit foes not execute the
+execution of current block. Say for example,
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+void foo()
+{
+/****/
+}
+
+void bar()
+{
+/****/
+foo();
+/****/
+}
+\stopCPP
+\blank[force,1mm]\hrule\blank[force,1mm]
+Then the execution of bar is suspended until foo returns after its
+work. Then the execution of bar is resumed with all the objects
+having same value before foo's call if not modified by foo. If a block
+is entered recursively, w new instance of the object is created each
+time. If the value if not initialized then initial value if
+indeterminate. The initialization is done each time the blocck is
+entered.
+
+This introduces the concept of recursion so let us do it. Two famous
+problems are there; Fibonacci numbers and factorial computation. I
+will give both iterative version and recursive versio, Factorial is
+left as an exercise for both the versions.
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 6th, 2010
+ * Description: Iterative version of Fibonacci numbers
+ */
+
+#include <stdio.h>
+
+int main()
+{
+  int f1=1;  //value of first Fibonacci number
+  int f2=1;  //value of second Fibonacci number
+  int temp;
+
+  int n=0;  //number of fibonacci numbers to be
+            //computed other than f1 and f2
+
+  printf("Enter the number of Fibonacci numbers to be computed\n");
+  scanf("%d", &n);
+
+  for(int i=0; i<n; i++)
+    {
+      temp = f2;
+      f2=f1+f2;
+      f1=temp;
+      printf("The %dth Fibbonacci number is %d\n",i+2,f2);
+    }
+  return 0;
+}	
+\stopCPP
+\index{itfib.c}
+\index{numbers+Fibonacci}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Iterative version of Fibonacci numbers.
+\stopalignment
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 6th, 2010
+ * Description: Recursive version of Fibonacci numbers
+ */
+
+#include <stdio.h>
+
+int fib(int n)
+{
+	if(n>=3)
+	{
+		return (fib(n-1)+fib(n-2));
+	}
+	else
+	{
+		return 1;
+	}
+}
+int main()
+{
+	int n=0;   //number of fibonacci numbers to be
+
+	printf("Enter the number up to which Fibonacci numbers to be computed\n");
+	scanf("%d", &n);
+	fib(n);
+	printf("For n=%d Fibonacci numbner is %d\n", n, (fib(n-1)+fib(n-2)));
+
+	return 0;
+}
+\stopCPP
+\index{recfib.c}
+\index{numbers+Fibonacci}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Recursive version of Fibonacci numbers.
+\stopalignment
+Fibonacci numbers are given by;
+\placeformula[formula:Fibonacci]
+\startformula
+f_n = f_{n-1} + f_{n-2}, where f_1=f_2=0
+\stopformula
+Please do both iterative and recursive versions for factorials. If you
+do not know or remember factorial definition then I am providing it
+for quick reference:
+7 20
+\placeformula[formula:factorial]
+\startformula
+n\ = n*(n-1)!\hfill\break
+\stopformula
+\placeformula[formula:factzero]
+\startformula
+0! = 1
+\stopformula
+
+\subsection{Types}
