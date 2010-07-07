@@ -53,7 +53,8 @@ int main()
 }
 
 \stopCPP
-\index{scope+funciton, block+identifer}
+\index{scope, funciton}
+\index{scpoe, block}
 \index{idscope.c}
 \hrule
 \blank[force,1mm]
@@ -260,13 +261,13 @@ int main()
 
   printf("i=%d",i);
   return 0;
-}	
+}		
 \stopCPP
 \index{vis1.c}
 \hrule
 \blank[force,1mm]
 \startalignment[middle]
-Program for scope and llinkage.
+Iteraive version for Fibbonacci numbers.
 \stopalignment
 \blank[force,1mm]\hrule\blank[force,1mm]
 \startCPP
@@ -281,17 +282,18 @@ Program for scope and llinkage.
 
 void f()
 {
-  extern int i;
+	extern int i;
 
-  printf("i=%d\n",i);
+	printf("i=%d\n",i);
 	
-  i=9;
-}\stopCPP
+	i=9;
+}	
+\stopCPP
 \index{vis2.c}
 \hrule
 \blank[force,1mm]
 \startalignment[middle]
-Program for scope and linkage.
+Recursive version for Fibonacci numbers.
 \stopalignment
 Since I have not compiled muliple file together I give you the
 command: \type{gcc -std=c99 vis1.c vis2.c -I/path-to-vis.h}. Testing
@@ -329,8 +331,8 @@ separate name spaces for various categories of identifiers, as follows:
 \item the members of structures or unions; each structure or union has a separate name
   space for its members (disambiguated by the type of the expression used to access the
   member via the . or -> operator);
-\item all other identifiers, called ordinary identifiers (declared in ordinary declarators or as
-  enumeration constants).
+\item all other identifiers, called ordinary identifiers (declared
+  in ordinary declarators or as enumeration constants).
 \stopitemize
 
 \subsection{Storage Duration of Identifiers}
@@ -398,6 +400,43 @@ left as an exercise for both the versions.
 /*
  * Author: Shiv Shankar Dayal
  * Date: July 6th, 2010
+ * Description: Recursive version of Fibonacci numbers
+ */
+
+#include <stdio.h>
+
+int main()
+{
+  int f1=1;  //value of first Fibonacci number
+  int f2=1;  //value of second Fibonacci number
+  int temp;
+
+  int n=0;  //number of fibonacci numbers to be
+            //computed other than f1 and f2
+
+  printf("Enter the number of Fibonacci numbers to be computed\n");
+  scanf("%d", &n);
+
+  for(int i=0; i<n; i++)
+    {
+      temp = f2;
+      f2=f1+f2;
+      f1=temp;
+      printf("The %dth Fibbonacci number is %d\n",i+2,f2);
+    }
+  return 0;
+}\stopCPP
+\index{vis2.c}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Reciursive version of Fibinacci numbers.
+\stopalignment
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 6th, 2010
  * Description: Iterative version of Fibonacci numbers
  */
 
@@ -423,55 +462,15 @@ int main()
       printf("The %dth Fibbonacci number is %d\n",i+2,f2);
     }
   return 0;
-}	
+}
 \stopCPP
-\index{itfib.c}
-\index{numbers+Fibonacci}
+\index{itfib.c.c}
 \hrule
 \blank[force,1mm]
 \startalignment[middle]
-Iterative version of Fibonacci numbers.
+Iterative version of Fibinacci numbers.
 \stopalignment
-\blank[force,1mm]\hrule\blank[force,1mm]
-\startCPP
-/*
- * Author: Shiv Shankar Dayal
- * Date: July 6th, 2010
- * Description: Recursive version of Fibonacci numbers
- */
 
-#include <stdio.h>
-
-int fib(int n)
-{
-	if(n>=3)
-	{
-		return (fib(n-1)+fib(n-2));
-	}
-	else
-	{
-		return 1;
-	}
-}
-int main()
-{
-	int n=0;   //number of fibonacci numbers to be
-
-	printf("Enter the number up to which Fibonacci numbers to be computed\n");
-	scanf("%d", &n);
-	fib(n);
-	printf("For n=%d Fibonacci numbner is %d\n", n, (fib(n-1)+fib(n-2)));
-
-	return 0;
-}
-\stopCPP
-\index{recfib.c}
-\index{numbers+Fibonacci}
-\hrule
-\blank[force,1mm]
-\startalignment[middle]
-Recursive version of Fibonacci numbers.
-\stopalignment
 Fibonacci numbers are given by;
 \placeformula[formula:Fibonacci]
 \startformula
@@ -491,3 +490,96 @@ n\ = n*(n-1)!\hfill\break
 \stopformula
 
 \subsection{Types}
+As we know that computers being electronic device does not know the
+difference between 0 and 1 so the menaing of these volatage levels or
+sequence of them typically in a group of 8 (bits) or 1 byte depends
+upon our level of abstraction. These groups can be stroed in a type
+and the meaning will change that is abstraction will chnage if we
+change the type associated with the same sequence.
+
+Types are grouped into three types and they are: object types
+i.e. types that fully describe the object, function types i.e. those
+describe funcitons, and incomplete types i.e. objects that do not have
+the information about their own size.
+
+I will telll you something more about incomplete types. By size means
+size of that type found by \type{sizeof} operator. It is a compile
+time operator and since type is incomplete it will not work.
+
+An object declared as type \type{_Bool} is large enough to store the
+values 0 and 1. gcc defines two value 0 and 1 as well. Let us see a
+trivial program.
+Fibonacci numbers are given by;
+\placeformula[formula:Fibonacci]
+\startformula
+f_n = f_{n-1} + f_{n-2}, where f_1=f_2=0
+\stopformula
+Please do both iterative and recursive versions for factorials. If you
+do not know or remember factorial definition then I am providing it
+for quick reference:
+\placeformula[formula:factorial]
+\startformula
+n\ = n*(n-1)!\hfill\break
+\stopformula
+\placeformula[formula:factzero]
+\startformula
+0! = 1
+\stopformula
+
+\subsection{Types}
+As we know that computers being electronic device does not know the
+difference between 0 and 1 so the menaing of these volatage levels or
+sequence of them typically in a group of 8 (bits) or 1 byte depends
+upon our level of abstraction. These groups can be stroed in a type
+and the meaning will change that is abstraction will chnage if we
+change the type associated with the same sequence.
+
+Types are grouped into three types and they are: object types
+i.e. types that fully describe the object, function types i.e. those
+describe funcitons, and incomplete types i.e. objects that do not have
+the information about their own size.
+
+I will tell you something more about incomplete types. By size means
+size of that type found by \type{sizeof} operator. It is a compile
+time operator and since type is incomplete it will not work.
+
+\subsubsection{\type{_Bool}}
+An object declared as type \type{_Bool} is large enough to store the
+values 0 and 1. gcc defines same two values as well. Let us see a
+trivial program.
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 6th, 2010
+ * Description: Demo of _Bool
+ */
+
+#include <stdio.h>
+
+int main()
+{
+  _Bool a=0;
+
+   if(a==0)
+   {
+     printf("I am 0\n", a);
+   }
+
+   return 0;
+}
+\stopCPP
+\index{bool.c}
+\index{\type{_Bool}}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Program for boolean.
+\stopalignment
+Howeverm you can assign any value upto 1 byte as sizeof operator gives
+the size as 1 byte. In that sense its behavior is very simmilar to
+char that it is made up 8 bytes and any non-ero value makes it true
+i.e. equal to one. Please test it for various values and confirm the
+result.
+
+\subsubsection{\type{char}}

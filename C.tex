@@ -10,22 +10,22 @@
 
 %interface=en --mode=screen
 \usemodule[simplefonts,vim,mathml,database]
-\setmainfont[HelveticaLTStd-Light]
-\setsansfont[HelveticaLTStd-Light]
-\setmonofont[Courier]
-\setmathfont[HelveticaLTStd-Light]
-\setupsimplefonts[size=9pt]
+\setmainfont[Latin Modern Roman]
+\setsansfont[Latin Modern Roman]
+\setmonofont[Latin Modern Mono]
+\setmathfont[]
+\setupsimplefonts[size=10pt]
 \setupindenting[yes,medium,next]
 \unprotect
 \definepapersize
   [manual]
-  [\c!width=28cm,
-   \c!height=28cm]
+  [\c!width=25cm,
+   \c!height=25cm]
 
 \definepapersize
   [screen]
-  [\c!width=28cm,
-   \c!height=28cm]
+  [\c!width=25cm,
+   \c!height=25cm]
 
 \setuppapersize
   [manual]
@@ -33,12 +33,14 @@
 \defineframedtext
   [framedcode]
   [strut=yes,
-   offset=0mm,
+   color=red,
+   offset=3mm,
    width=20cm,
    align=flushleft]
 
 \definetyping[code][numbering=line,
                     bodyfont=small,
+                    color=red,
                     before={\startframedcode},
                     after={\stopframedcode}]
 %toc
@@ -206,8 +208,8 @@
 \startfrontmatter
 \startstandardmakeup
 \startalignment[center]
-  \vfill \definedfont[Serif at 48pt]\setstrut \strut Learning Correct   
-  \definedfont[Serif at 48pt]\setstrut \strut Programming
+  \vfill \definedfont[SerifBold at 48pt]\setstrut \strut Learning Correct   
+  \definedfont[SerifBold at 48pt]\setstrut \strut Programming
   \blank[2*big] \definedfont[Serif at 30pt]\setstrut \strut C
   \blank[3*big] \definedfont[Serif at 36pt]\setstrut \strut Shiv S Dayal
   \vfill
@@ -228,9 +230,9 @@
 Copyright \copyright Shiv Shankar Dayal.
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
-any later version published by the Free Software Foundation. However,
-modifications must pass through me and no forking is allowed. This is
-an additional requirement.
+any later version published by the Free Software Foundation. The GNU
+FDL is there in the same directory as this file with
+name \quotation{LICENSE}.
 \stopstandardmakeup
 \completecontent
 \completelistoftables

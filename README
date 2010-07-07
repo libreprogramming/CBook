@@ -1,0 +1,8 @@
+Should you want to produce pdf yourself just use context.
+You will need two modules and many also need to adjust fonts
+to your liking. The modules are vim and simplefonts. Once you
+have both of then properly installed just run make.
+
+Please edit Makefile as I am using pdftk to encrypt the pdf so
+probably you may want to remove it.
+
