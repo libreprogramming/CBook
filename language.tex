@@ -502,43 +502,6 @@ i.e. types that fully describe the object, function types i.e. those
 describe funcitons, and incomplete types i.e. objects that do not have
 the information about their own size.
 
-I will telll you something more about incomplete types. By size means
-size of that type found by \type{sizeof} operator. It is a compile
-time operator and since type is incomplete it will not work.
-
-An object declared as type \type{_Bool} is large enough to store the
-values 0 and 1. gcc defines two value 0 and 1 as well. Let us see a
-trivial program.
-Fibonacci numbers are given by;
-\placeformula[formula:Fibonacci]
-\startformula
-f_n = f_{n-1} + f_{n-2}, where f_1=f_2=0
-\stopformula
-Please do both iterative and recursive versions for factorials. If you
-do not know or remember factorial definition then I am providing it
-for quick reference:
-\placeformula[formula:factorial]
-\startformula
-n\ = n*(n-1)!\hfill\break
-\stopformula
-\placeformula[formula:factzero]
-\startformula
-0! = 1
-\stopformula
-
-\subsection{Types}
-As we know that computers being electronic device does not know the
-difference between 0 and 1 so the menaing of these volatage levels or
-sequence of them typically in a group of 8 (bits) or 1 byte depends
-upon our level of abstraction. These groups can be stroed in a type
-and the meaning will change that is abstraction will chnage if we
-change the type associated with the same sequence.
-
-Types are grouped into three types and they are: object types
-i.e. types that fully describe the object, function types i.e. those
-describe funcitons, and incomplete types i.e. objects that do not have
-the information about their own size.
-
 I will tell you something more about incomplete types. By size means
 size of that type found by \type{sizeof} operator. It is a compile
 time operator and since type is incomplete it will not work.
@@ -583,3 +546,59 @@ i.e. equal to one. Please test it for various values and confirm the
 result.
 
 \subsubsection{\type{char}}
+\type{char} is one of the basic types or concrete types of C. Typically it is
+one byte long and in case of signed ranges from -127 to 127 and in case of it
+being unsigned it ranges from 0 to 255 as we have seen in the table previously.
+
+The above saidd statement is true for ASCII or UTF-8 symbols but in case of
+2-byte character becomes wide character typically for internationalizaztion.
+Basic exevcution set is composed of ASCII characters and they range from 0 to
+127 which all fit in 7-bits i.e. they range from 0 to 127 so they are guaranteed
+to be nonnegative. If any other value is used then the representation will be
+implementation-defined.
+
+The main usage of char data type is to display printable characters on screen or
+on any other output device like a computer monitor, printer output etc.
+
+Let us see the program:
+\blank[force,1mm]\hrule\blank[force,1mm]
+\startCPP
+/*
+ * Author: Shiv Shankar Dayal
+ * Date: July 5th, 2010
+ * Description: Program on demo of char.
+ */
+
+#include <stdio.h>
+#include <limits.h>
+
+int main()
+{
+  char c={0};
+  unsigned char uc={0};
+
+  printf("Minimum value of signed char is %d\n",SCHAR_MIN);
+  printf("Maximum value of signed char is %d\n",SCHAR_MAX);
+  printf("maximum value of unsigned char is %d\n", UCHAR_MAX);
+
+  for(int i=0; i<256;i++)
+    {
+      printf("%d=%c\n",i,i);
+    }
+
+  return 0;
+}
+\stopCPP
+\index{char.c}
+\index{\type{char}}
+\hrule
+\blank[force,1mm]
+\startalignment[middle]
+Program for char type.
+\stopalignment
+
+\subsubsection{\type{int}}
+As we have seen there are five different classes of signed integer in 
+\at[Table]{tab:Numerical Limts}. There may be othe extended versions of these
+integers. The rules for doing so we will soon see and then you can check your
+compiler manual.
