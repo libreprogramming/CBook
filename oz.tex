@@ -9,38 +9,40 @@
 %will bear no responsibility to author under any circumstances.
 
 %interface=en --mode=screen
-\usemodule[simplefonts,vim,mathml,database]
-\setmainfont[Latin Modern Roman]
-\setsansfont[Latin Modern Roman]
+\usemodule[simplefonts,vim,mathml,database,chemic,units]
+\setmainfont[Iwona]
+\setsansfont[Iwona]
 \setmonofont[Latin Modern Mono]
-\setmathfont[]
 \setupsimplefonts[size=10pt]
 \setupindenting[yes,medium,next]
 \unprotect
-\definepapersize
-  [manual]
-  [\c!width=25cm,
-   \c!height=25cm]
+%\definepapersize
+%  [manual]
+%  [\c!width=25cm,
+%   \c!height=25cm]
 
-\definepapersize
-  [screen]
-  [\c!width=25cm,
-   \c!height=25cm]
+%\definepapersize
+%  [screen]
+%  [\c!width=25cm,
+%   \c!height=25cm]
 
 \setuppapersize
   [manual]
   [screen]
+\setuplayout
+  [textwidth=13cm]
 \defineframedtext
   [framedcode]
   [strut=yes,
    color=red,
    offset=3mm,
-   width=20cm,
+   width=14cm,
    align=flushleft]
 
 \definetyping[code][numbering=line,
                     bodyfont=small,
                     color=red,
+                    width=14cm,
                     before={\startframedcode},
                     after={\stopframedcode}]
 %toc
@@ -95,17 +97,18 @@
   [remark]
   [subsubsubject]
 
-\setuphead [chapter]      [color=green]
-\setuphead [section]      [color=green]
-\setuphead [subsection]   [color=green]
-\setuphead [subsubsection][color=green]
+\setuphead [chapter]      [color=green,textstyle=sans]
+\setuphead [section]      [color=green,textstyle=sans]
+\setuphead [subsection]   [color=green,textstyle=sans]
+\setuphead [subsubsection][color=green,textstyle=sans]
 
 \setupheadertexts
   []
 
 \setupcolors
   [state=start]
-\setupurl[state=start,color=blue]
+\setupurl[state=start,color=Blue]
+
 \setuptyping
   [color=orchid,
 ]%   style=\mainfacenarrowtt]
@@ -115,15 +118,15 @@
 \setuptype
   [color=orchid,
 ]%   style=\mainfacenarrowtt]
-
+\definecolor[Blue] [r=0,b=0,b=1]
 \definecolor[blue] [b=.5]
 \definecolor[red]  [r=.5]
-\definecolor[green][b=.5]
+\definecolor[green][g=.3,b=.3]
 \definecolor[orchid][g=.3,b=.3]
 
 \startsetups pagenumber:right
   \setlayerframed
-    [page]
+    [PAGE]
     [preset=rightbottom,offset=1cm]
     [frame=off,height=1cm,offset=overlay]
     {\useMPgraphic{luanumber}}
@@ -185,7 +188,7 @@
   \fi}
 \starttext
 %Hans's setup for headers
-\setuppagenumbering[state=start,alternative=doublesided]
+\setuppagenumbering[state=stop]
 
 \setupheadertexts[]
 \setupheadertexts[\setups{text a}][][][\setups{text b}]
@@ -208,10 +211,9 @@
 \startfrontmatter
 \startstandardmakeup
 \startalignment[center]
-  \vfill \definedfont[SerifBold at 48pt]\setstrut \strut Learning Correct   
-  \definedfont[SerifBold at 48pt]\setstrut \strut Programming
-  \blank[2*big] \definedfont[Serif at 30pt]\setstrut \strut C
-  \blank[3*big] \definedfont[Serif at 36pt]\setstrut \strut Shiv S Dayal
+  \vfill \definedfont[SansBold at 48pt]\setstrut \strut OZ of
+  \definedfont[SansBold at 48pt]\setstrut \strut Programming
+  \blank[5*big] \definedfont[SansBold at 36pt]\setstrut \strut Shiv S Dayal
   \vfill
 \stopalignment
 \stopstandardmakeup
@@ -225,6 +227,7 @@
 \stopalignment
 \stopstandardmakeup
 \pagebreak
+\setuppagenumbering[state=start,alternative=doublesided]
 \startstandardmakeup
 \vfill
 Copyright \copyright Shiv Shankar Dayal.
@@ -233,27 +236,41 @@ under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation. The GNU
 FDL is there in the same directory as this file with
 name \quotation{LICENSE}.
+
+Wikipedia images are under their LICENSE.
 \stopstandardmakeup
 \completecontent
 \completelistoftables
 \completelistoffigures
 \stopfrontmatter
 \input{Preface.tex}
-%\part{C}
+%\part{Mathematics, Phsics and Chemistry}
 \startstandardmakeup
 \startalignment[center]
   \vfill
-	\definedfont[Serif at 48pt]\setstrut \strut Part I
+	\definedfont[Sans at 48pt]\setstrut \strut Part I
 	\blank[3*big]
-	\definedfont[Serif at 48pt]\setstrut \strut C 
+	\definedfont[Sans at 48pt]\setstrut \strut Maths, Physics and Chemistry
   \vfill
 \stopalignment
 \stopstandardmakeup
-\input{introduction.tex}
-\input{fs.tex}
-\input{env.tex}
-\input{language.tex}
-\startbackmatter
-\completeindex[interaction=all]
-\stopbackmatter
+
+\input{pcm.tex}
+
+%\startstandardmakeup
+%\startalignment[center]
+%  \vfill
+%	\definedfont[Sans at 48pt]\setstrut \strut Part II
+%	\blank[3*big]
+%	\definedfont[Sans at 48pt]\setstrut \strut C 
+%  \vfill
+%\stopalignment
+%\stopstandardmakeup
+%\input{introduction.tex}
+%\input{fs.tex}
+%\input{env.tex}
+%\input{language.tex}
+%\startbackmatter
+%\completeindex[interaction=all]
+%\stopbackmatter
 \stoptext
