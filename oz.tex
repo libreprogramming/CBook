@@ -10,10 +10,10 @@
 
 %interface=en --mode=screen
 \usemodule[simplefonts,vim,mathml,database,chemic,units]
-\setmainfont[Iwona]
-\setsansfont[Iwona]
-\setmonofont[Latin Modern Mono]
-\setupsimplefonts[size=10pt]
+%\setmainfont[Iwona]
+%\setsansfont[Iwona]
+%\setmonofont[Latin Modern Mono]
+%\setupsimplefonts[size=9pt]
 \setupindenting[yes,medium,next]
 \unprotect
 %\definepapersize
@@ -79,20 +79,18 @@
 \definevimtyping[ASM][syntax=asm, numbering=on]
 \preloadtypescripts
 
-%\definetypeface[mainfacenormal]  [rm][serif] [modern]       [default]
-%\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
-%\definetypeface[mainfacenormal]  [tt][mono] [modern]      [default]
-%\definetypeface[mainfacenormal]  [mm][math] [modern]       [default]
+\definetypeface[mainfacenormal]  [rm][serif] [bonum]       [default]
+\definetypeface[mainfacenormal]  [ss][sans][bonum]    [default]
+\definetypeface[mainfacenormal]  [tt][mono] [courier]      [default]
+\definetypeface[mainfacenormal]  [mm][math] [bonum]       [default]
 
-%\definetypeface[mainfacemedium]  [rm][serif] [modern][default]
-%\definetypeface[mainfacenormal]  [ss][sans][modern]    [default]
-%\definetypeface[mainfacemedium]  [tt][mono] [modern]      [default]
-%\definetypeface[mainfacemedium]  [mm][math] [modern][default]
+\definetypeface[mainfacemedium]  [rm][serif] [bonum][default]
+\definetypeface[mainfacenormal]  [ss][sans][bonum]    [default]
+\definetypeface[mainfacemedium]  [tt][mono] [courier]      [default]
+\definetypeface[mainfacemedium]  [mm][math] [bonum][default]
 
-%\definetypeface[mainfacenarrowtt][tt][mono] [modern] [default]
-
-%\setupbodyfont[mainfacenormal,11pt]
-
+\definetypeface[mainfacenarrowtt][tt][mono] [courier] [default]
+\setupbodyfont[mainfacenormal,9pt]
 \definehead
   [remark]
   [subsubsubject]

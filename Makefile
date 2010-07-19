@@ -10,6 +10,6 @@
 
 OBJECTS=oz.tex preface.tex pcm.tex introduction.tex fs.tex env.tex language.tex
 oz.pdf: $(OBJECTS)
-	context  --mode=screen  --btachmde oz.tex
+	context  --mode=screen --btachmde oz.tex
 clean: oz.pdf
 	rm oz.pdf
