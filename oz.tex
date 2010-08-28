@@ -79,17 +79,17 @@
 \definevimtyping[ASM][syntax=asm, numbering=on]
 \preloadtypescripts
 
-\definetypeface[mainfacenormal]  [rm][serif] [bonum]       [default]
-\definetypeface[mainfacenormal]  [ss][sans][bonum]    [default]
+\definetypeface[mainfacenormal]  [rm][serif] [times]       [default]
+\definetypeface[mainfacenormal]  [ss][sans][times]    [default]
 \definetypeface[mainfacenormal]  [tt][mono] [courier]      [default]
-\definetypeface[mainfacenormal]  [mm][math] [bonum]       [default]
+\definetypeface[mainfacenormal]  [mm][math] [times]       [default]
 
-\definetypeface[mainfacemedium]  [rm][serif] [bonum][default]
-\definetypeface[mainfacenormal]  [ss][sans][bonum]    [default]
+\definetypeface[mainfacemedium]  [rm][serif] [times][default]
+\definetypeface[mainfacenormal]  [ss][sans][times]    [default]
 \definetypeface[mainfacemedium]  [tt][mono] [courier]      [default]
-\definetypeface[mainfacemedium]  [mm][math] [bonum][default]
+\definetypeface[mainfacemedium]  [mm][math] [times][default]
 
-\definetypeface[mainfacenarrowtt][tt][mono] [courier] [default]
+\definetypeface[mainfacenarrowtt][tt][mono] [times] [default]
 \setupbodyfont[mainfacenormal,9pt]
 \definehead
   [remark]
@@ -255,20 +255,20 @@ Wikipedia images are under their LICENSE.
 
 \input{pcm.tex}
 
-%\startstandardmakeup
-%\startalignment[center]
-%  \vfill
-%	\definedfont[Sans at 48pt]\setstrut \strut Part II
-%	\blank[3*big]
-%	\definedfont[Sans at 48pt]\setstrut \strut C 
-%  \vfill
-%\stopalignment
-%\stopstandardmakeup
-%\input{introduction.tex}
-%\input{fs.tex}
-%\input{env.tex}
-%\input{language.tex}
-%\startbackmatter
-%\completeindex[interaction=all]
-%\stopbackmatter
+\startstandardmakeup
+\startalignment[center]
+  \vfill
+	\definedfont[Sans at 48pt]\setstrut \strut Part II
+	\blank[3*big]
+	\definedfont[Sans at 48pt]\setstrut \strut C 
+  \vfill
+\stopalignment
+\stopstandardmakeup
+\input{introduction.tex}
+\input{fs.tex}
+\input{env.tex}
+\input{language.tex}
+\startbackmatter
+\completeindex[interaction=all]
+\stopbackmatter
 \stoptext
