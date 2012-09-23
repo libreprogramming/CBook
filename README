@@ -17,3 +17,4 @@ have both of then properly installed just run make.
 Please edit Makefile as I am using pdftk to encrypt the pdf so
 probably you may want to remove it.
 
+The work on these books have been moved to http://libreprogramming.org/books/
